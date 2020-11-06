@@ -12,8 +12,8 @@
 }
 
 body {
-  background-color: #5C7ED8;
-  color: #000036;
+  background-color: #92A8D1;
+  color: #0A3055;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -22,8 +22,7 @@ body {
   margin: 20px;
   flex-direction: column;
   justify-content: center;
-  /*padding: 20px 0 20px 20px;*/
-  background-color: #EF767A;
+  background-color: #F7CAC9;
   height: 350px;
   padding: 20px;
 }
@@ -48,7 +47,6 @@ form label {
 
 .button-right {
   text-align: right;
-  /*margin-right: 20px;*/
 }
 
 .feedback {

@@ -118,23 +118,6 @@ function generateQuestionPage() {
   `;
 }
 
-/*function generateQuestions(questionNumber, questionAnswer) { 
-  return `
-    <h2>Question ${questionNumber}/5</h2>
-    <form>
-      <p>${questionAnswer.question}</p>
-      <label class="block"><input type="radio" name="question-${store.questions[questionNumber]}" value="a" required>${questionAnswer.answer[0]}</label>
-      <label class="block"><input type="radio" name="question-${store.questions[questionNumber]}" value="b">${questionAnswer.answer[1]}</label>
-      <label class="block"><input type="radio" name="question-${store.questions[questionNumber]}" value="c">${questionAnswer.answer[2]}</label>
-      <label class="block"><input type="radio" name="question-${store.questions[questionNumber]}" value="d">${questionAnswer.answer[3]}</label>
-      <div class="button-right">
-        <button type="submit" class="js-submit">Submit</button>
-      </div>
-    </form>
-    <p>Score: ${store.score}/${store.questions.length}</p>
-  `;
-};*/
-
 function generateEndPage() {
   return `
     <div class="wrapper">
@@ -191,6 +174,7 @@ function renderQuiz() {
   };
 }
 
+// Renders feedback page based on whether or not the answer was correct
 function renderFeedback(isCorrect, correctAnswer) {
   if(store.quizStarted){
     if (isCorrect) {
@@ -245,10 +229,6 @@ function handleClickQuizStart() {
     startQuiz();
     renderQuiz();
   });
-  //prevent event default
-  //add to question number
-  //change quizStarted to true
-  //render question page
 }
 
 function handleClickAnswerSubmit() {
@@ -261,10 +241,6 @@ function handleClickAnswerSubmit() {
     let correct = checkCorrect(selectedAnswer, currentQuestion.correctAnswer);
     renderFeedback(correct, currentQuestion.correctAnswer);
   });
-  //prevent event default
-  //check if answer is correct
-  //Give answer feedback
-  //Change submit button to next button
 }
 
 function handleClickNext() {
@@ -272,10 +248,7 @@ function handleClickNext() {
     event.preventDefault();
     nextQuestion();
     renderQuiz();
-  })
-  //prevent event default
-  //add to question number
-  //render next question page or end page
+  });
 }
 
 function handleClickQuizRestart() {
@@ -283,12 +256,7 @@ function handleClickQuizRestart() {
     event.preventDefault();
     resetQuiz();
     renderQuiz();
-  })
-  //prevent event default
-  //reset score
-  //reset question number
-  //reset quizStarted boolean
-  //render start page
+  });
 }
 
 
