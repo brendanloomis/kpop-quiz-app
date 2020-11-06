@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: #F7CAC9;
-  height: 350px;
+  height: 400px;
   padding: 20px;
 }
 
@@ -56,4 +56,8 @@ form label {
 
 p {
   font-size: 20px;
+}
+
+input {
+  margin-right: 5px;
 }
