@@ -62,3 +62,23 @@ p {
 input {
   margin-right: 5px;
 }
+
+/* Responsive design for larger screens */
+@media (min-width: 700px) {
+  body {
+    width: 90%;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 45px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .feedback {
+    font-size: 25px;
+  }
+}

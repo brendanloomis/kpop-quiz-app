@@ -78,6 +78,8 @@ const store = {
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 // These functions return HTML templates
+
+// Creates HTML for the start page
 function generateStartPage() {
   return `
     <div class="wrapper">
@@ -89,6 +91,7 @@ function generateStartPage() {
   `;
 };
 
+// Creates HTML for the answer choices
 function generateAnswers() {
   let currentQ = getQuestion(store.questionNumber);
   const answerArr = currentQ.answers;
@@ -101,6 +104,7 @@ function generateAnswers() {
   return answerStr;
 }
 
+// Creates HTML for the question pages
 function generateQuestionPage() {
   let currentQ = getQuestion(store.questionNumber);
   return `
@@ -118,6 +122,7 @@ function generateQuestionPage() {
   `;
 }
 
+// Creates HTML for the end page
 function generateEndPage() {
   return `
     <div class="wrapper">
@@ -129,6 +134,7 @@ function generateEndPage() {
   `;
 }
 
+// Creates HTML for feedback page if the answer is correct
 function generateCorrectFeedback(correct) {
   return `
     <div class='wrapper'>
@@ -139,6 +145,7 @@ function generateCorrectFeedback(correct) {
   `;
 }
 
+// Creates HTML for feedback page if answer is incorrect
 function generateIncorrectFeedback(correct) {
   return `
     <div class='wrapper'>
@@ -149,6 +156,7 @@ function generateIncorrectFeedback(correct) {
   `;
 }
 
+// Creates HTML for next button on feedback page
 function generateNextButton() {
   return `
     <div class="button-holder js-button">
@@ -188,31 +196,36 @@ function renderFeedback(isCorrect, correctAnswer) {
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
+// Returns the question object corresponding to the question number of the quiz
 function getQuestion(questionNumber) {
   return store.questions[questionNumber - 1];
 }
 
+// Adds a point to the score
 function addToScore() {
   store.score += 1;
 }
 
-
+// Resets the quiz, so user can take the quiz again
 function resetQuiz() {
   store.quizStarted = false;
   store.score = 0;
   store.questionNumber = 0;
 }
 
-
+// Starts the quiz
 function startQuiz() {
   store.quizStarted = true;
   store.questionNumber = 1;
 }
 
+// Moves on to the next question of the quiz
 function nextQuestion() {
   store.questionNumber++;
 }
 
+// Checks to see if the answer selected by the user is correct
 function checkCorrect(userAnswer, answerKey) {
   if (userAnswer === answerKey) {
     addToScore();
@@ -222,7 +235,7 @@ function checkCorrect(userAnswer, answerKey) {
   };
 }
 
-
+// Starts quiz when start button is clicked
 function handleClickQuizStart() {
   $('main').on('click', '.start', function(event) {
     event.preventDefault();
@@ -231,6 +244,7 @@ function handleClickQuizStart() {
   });
 }
 
+// Checks if submitted answer is correct and renders corresponding feedback page
 function handleClickAnswerSubmit() {
   $('main').on('submit', '.js-quiz', function(event) {
     event.preventDefault();
@@ -243,6 +257,7 @@ function handleClickAnswerSubmit() {
   });
 }
 
+// Renders the question page for the next question when Next button is clicked
 function handleClickNext() {
   $('main').on('click', '.js-next', function(event) {
     event.preventDefault();
@@ -251,6 +266,7 @@ function handleClickNext() {
   });
 }
 
+// Resets quiz and renders start page when Restart button is clicked
 function handleClickQuizRestart() {
   $('main').on('click', '.js-restart', function(event) {
     event.preventDefault();
